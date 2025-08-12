@@ -83,7 +83,7 @@ body {
 
 
 #photo {
-  background-image: url('images/anuj.png');
+  background-image: url('/CSS/Images/Anuj.png');
   background-size: cover;
   background-position: center;
   width: 95%;
