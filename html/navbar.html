@@ -1,28 +1,11 @@
 <!-- Navigation Bar -->
 <style>
     * {
-        color: white;
-        box-sizing: border-box;
+         color: white;
+        scrollbar-width: thin;
+        scrollbar-color: rgb(255, 255, 255) rgb(0, 0, 0);
     }
-
-    /* Custom scrollbar for WebKit browsers */
-    *::-webkit-scrollbar {
-        width: 8px;
-        background: black;
-    }
-
-    *::-webkit-scrollbar-thumb {
-        background: white;
-        border-radius: 4px;
-    }
-
-    /* Custom scrollbar for Firefox (only where supported) */
-    @supports (scrollbar-color: white black) {
-        * {
-            scrollbar-color: white black;
-        }
-    }
-
+    
     #nav_bar {
         background-color: black;
         width: 100%;
@@ -35,6 +18,9 @@
         justify-content: space-between;
         top: 0;
         left: 0;
+        z-index: 1000;
+        /* Ensure the navbar is above other content */
+        font-family: 'Arial', sans-serif;
     }
 
     .logo-img {
@@ -44,12 +30,12 @@
     }
 
     .logo {
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 2px;
-}
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 2px;
+    }
 
 
     #nav-buttons {
@@ -71,7 +57,7 @@
     }
 
     #nav-buttons div:hover {
-        background-color: #333;
+        background-color: rgba(255, 56, 1, 0.644);
     }
 
     #nav-buttons div a {
@@ -80,8 +66,6 @@
     }
 </style>
 <nav id="nav_bar">
-    <!-- <div id="logo"></div>
-    <div id="name">Anujkant</div> -->
     <h1 class="logo">
         <img src="/CSS/Images/logo.png" alt="A" class="logo-img">
         nujkant
