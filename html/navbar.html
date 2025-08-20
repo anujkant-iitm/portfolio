@@ -7,8 +7,16 @@
 <style>
     * {
         color: white;
-        scrollbar-width: thin;
-        scrollbar-color: rgb(255, 255, 255) rgb(0, 0, 0);
+        /* Fallback for Chrome, Safari, and others */
+        /* Chrome, Edge, and Safari */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: rgb(0, 0, 0);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgb(255, 255, 255);
+            border-radius: 4px;
+        }
     }
 
     #nav_bar {
@@ -179,10 +187,6 @@
 
         label[for="menu_btn"] {
             display: block;
-        }
-
-        #hamburger-menu-content {
-            /* right: -200%; */
         }
 
     }
