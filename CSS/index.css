@@ -1,10 +1,19 @@
+/* CSS Variables for easier theming */
+:root {
+  --primary-color: #02eff8;
+  --secondary-color: #ff4000;
+  --text-color: #ffffff;
+  --bg-color: #000000;
+  --card-bg-color: rgba(255, 255, 255, 0.1);
+}
+
 * {
   padding: 0;
   margin: 0;
-  color: azure;
+  color: var(--text-color);
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
-
 
 body {
   background-image: url('https://wallpapercave.com/wp/wp2757874.gif');
@@ -15,17 +24,51 @@ body {
   margin-top: 50px;
 }
 
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid var(--primary-color);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
 /* First Page name:Homepage*/
 #homepage {
   background-color: rgba(0, 0, 0, 0.5);
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  min-height:100vh;
+  min-height: 100vh;
   z-index: 0;
   display: flex;
   justify-content: center;
   overflow-x: hidden;
+  /* Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* profile Picture */
@@ -37,7 +80,6 @@ body {
   position: relative;
   margin-top: 7%;
 }
-
 
 #ring {
   width: 77%;
@@ -58,7 +100,7 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 100%;
-  background: conic-gradient(#000000, #02eff8, #ff4000);
+  background: conic-gradient(var(--bg-color), var(--primary-color), var(--secondary-color));
   animation: spin 7s linear infinite;
   -webkit-mask: radial-gradient(farthest-side, transparent calc(0% - 20px), black 100%);
   mask: radial-gradient(farthest-side, transparent calc(100% - 20px), rgb(0, 0, 0) 100%);
@@ -73,8 +115,6 @@ body {
     transform: rotate(360deg);
   }
 }
-
-
 
 #photo {
   background-image: url('/CSS/Images/Anuj_iitm.png');
@@ -92,7 +132,6 @@ body {
 
 #photo:hover {
   transform: scale(1.05);
-
 }
 
 /* Intro Text */
@@ -103,7 +142,7 @@ body {
   flex-direction: column;
   font-size: 1.2rem;
   overflow: hidden;
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
 }
 
 #fixed {
@@ -111,7 +150,7 @@ body {
 }
 
 .txt_color {
-  color: rgb(245, 74, 0)
+  color: var(--secondary-color);
 }
 
 #sec_line {
@@ -135,10 +174,10 @@ body {
 
 .scl_btns {
   width: 40px;
-  height:40px;
+  height: 40px;
   margin: 0 10px;
   border-radius: 50%;
-  background-color: rgb(255, 90, 0);
+  background-color: var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,19 +186,18 @@ body {
   border: 2px solid rgb(123, 104, 228);
   box-sizing: border-box;
   text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .scl_btns:hover {
   background-color: rgb(123, 104, 228);
   cursor: pointer;
+  transform: translateY(-5px);
 }
-
-
-
 
 /* ----------------------------------------------------------------- */
 
-#education_section{
+#education_section {
   position: relative;
   bottom: 27px;
 }
@@ -169,13 +207,21 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .section-title {
-  color: rgb(0, 234, 255);
+  color: var(--primary-color);
   padding: 0px 3%;
-  background-color: rgb(0, 0, 0);
+  background-color: var(--bg-color);
   border: 2px solid rgb(123, 104, 228);
   font-size: 3rem;
   font-weight: 700;
@@ -186,12 +232,10 @@ body {
 .line {
   width: 100%;
   height: 3px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid var(--text-color);
   z-index: -1;
   position: absolute;
 }
-
-
 
 #education {
   display: flex;
@@ -209,7 +253,6 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   background-repeat: no-repeat;
   background-blend-mode: overlay;
-
   background-size: cover;
   background-position: center;
   min-height: 400px;
@@ -218,13 +261,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.college:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
 
 .clg-logo {
   width: 250px;
   height: 250px;
-  border: 3px solid rgb(255, 255, 255);
+  border: 3px solid var(--text-color);
   background-image: url('/CSS/Images/logo.png');
   background-size: cover;
   background-position: center;
@@ -234,12 +283,12 @@ body {
 
 .clg-details {
   width: 90%;
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
 }
 
 .clg-details h2 {
   font-size: 1.5rem;
-  color: rgb(75, 200, 255);
+  color: var(--primary-color);
   margin-bottom: 10px;
 }
 
@@ -257,7 +306,7 @@ body {
 
 .clg_year {
   font-size: 1.2rem;
-  color: rgb(255, 255, 255);
+  color: var(--text-color);
   margin-bottom: 10px;
   border: 1px solid white;
   background-color: rgba(255, 255, 255, 0.2);
@@ -267,12 +316,46 @@ body {
   font-weight: 700;
 }
 
+/* Projects Section */
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.project-card {
+  background-color: var(--card-bg-color);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  margin: 15px 0 10px;
+  color: var(--primary-color);
+}
+
+.project-card p {
+  padding: 0 15px 15px;
+}
+
+
 /* Responsive Design */
-
-
-
-
-
 @media screen and (max-width: 768px) {
   #homepage {
     flex-wrap: wrap;
@@ -304,8 +387,13 @@ body {
 .skills_content {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--card-bg-color);
   border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.skills_content:hover {
+  transform: scale(1.02);
 }
 
 .skills_list {
@@ -320,8 +408,6 @@ body {
   border-radius: 5px;
 }
 
-
-
 footer {
   width: 100%;
   height: 100px;
@@ -329,18 +415,41 @@ footer {
   display: flex;
 }
 
-.foot_box{
+.foot_box {
   height: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;
-  padding:20px;
-  line-height:1.5;
+  justify-content: space-evenly;
+  padding: 20px;
+  line-height: 1.5;
   font-size: 0.8rem;
- overflow:scr
+  overflow: scroll
 }
 
-#foot_links{
-  width:40%
+#foot_links {
+  width: 40%
+}
+
+
+/* Scroll to top button */
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: var(--secondary-color);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+#scrollToTopBtn:hover {
+  background-color: var(--primary-color);
 }
