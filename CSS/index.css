@@ -143,8 +143,8 @@ section.visible {
   text-align: center;
   box-shadow: var(--shadow-m);
   transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .project-card:hover {
