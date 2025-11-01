@@ -1,0 +1,220 @@
+:root {
+    --primary-color: #ff4000;
+    --secondary-color: rgb(123, 104, 228);
+    --tertiary-color: #02eff8;
+    --quaternary-color: #ffcc00;
+    --text-color: #ffffff;
+    --bg-color: #000000;
+    --card-bg-color: rgba(255, 255, 255, 0.1);
+}
+/* First Page name:Homepage*/
+main {
+    background-image: url('https://wallpapercave.com/wp/wp2757874.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+#homepage {
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    align-items: center;
+    font-family: 'Nunito', 'Poppins', sans-serif;
+
+    /* Animation */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 2s forwards;
+}
+
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* profile Picture */
+#profile {
+    width: 40vw;
+    height: 40vw;
+    max-width: 400vw;
+    max-height: 400vw;
+    position: relative;
+    margin-top: 7%;
+}
+
+#ring {
+    width: 77%;
+    height: 77%;
+    max-width: 120vw;
+    max-height: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#ring::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 100%;
+    background: conic-gradient(var(--bg-color), var(--text-color), var(--tertiary-color), var(--secondary-color), var(--primary-color));
+    animation: spin 7s linear infinite;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(0% - 20px), black 100%);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 20px), rgb(0, 0, 0) 100%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#photo {
+    background-image: url('/CSS/Images/profile.jpg');
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    width: 76%;
+    height: 76%;
+    position: absolute;
+    top: 12%;
+    left: 11%;
+    transition: transform 0.3s ease-in-out;
+    z-index: 0;
+}
+
+#photo:hover {
+    transform: scale(1.05);
+}
+
+/* Intro Text */
+#text-box {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+#fixed {
+    font-size: clamp(50px, 8vw, 100px);
+}
+
+.highlighted_text {
+    color: var(--primary-color);
+}
+
+#sec_line {
+    font-size: clamp(30px, 6vw, 60px);
+    margin: 10px;
+}
+
+#social_btns {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+@media (max-width: 480px) {
+    .scl_btns {
+        margin: 5px;
+    }
+}
+
+.scl_btns {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    color: white;
+    border: 2px solid var(--tertiary-color);
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.scl_btns:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+#download_btn {
+    margin-top: 20px;
+    width:fit-content;
+    height: 40px;
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    border-radius: 20px;
+    font-size: 1.05rem;
+    padding: 0 15px;
+    /* border: 2px solid var(--primary-color); */
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+    i{
+        font-size: 1.1rem;
+    }
+}
+#download_btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    transform: translateY(-5px);
+    /* border: 2px solid var(--secondary-color); */
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    #homepage {
+        flex-wrap: wrap;
+    }
+
+    #text-box {
+        margin-top: 30px;
+        width: 80%;
+        padding: 5px 10px;
+    }
+
+    #profile {
+        margin-top: 50px;
+        width: 95vw;
+        height: 95vw;
+    }
+
+    #education_heading {
+        width: 90vw;
+    }
+}
