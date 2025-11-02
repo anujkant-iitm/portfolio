@@ -24,7 +24,7 @@ main {
     overflow-x: hidden;
     align-items: center;
     font-family: 'Nunito', 'Poppins', sans-serif;
-
+    padding-top: 80px;
     /* Animation */
     opacity: 0;
     transform: translateY(30px);
