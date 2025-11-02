@@ -1,0 +1,137 @@
+/* /d:/Web Design/Portfolio/CSS/stats.css
+    Professional, animated transparent design for the "Stats" section - Dark Theme.
+*/
+
+/* Theme variables - Dark by default */
+:root{
+  --bg: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #818cf8;
+  --glow: rgba(129, 140, 248, 0.5);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+
+@keyframes gridMove{
+  0%{ transform: translate(0, 0) rotate(0deg); }
+  100%{ transform: translate(50px, 50px) rotate(360deg); }
+}
+/* Grid that holds the two images */
+.stats_grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: start;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card-like images with glassmorphism */
+.stats_grid img{
+  display: block;
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--card-border);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
+  cursor: pointer;
+  position: relative;
+  animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.stats_grid img:nth-child(1){ animation-delay: 0.1s; }
+.stats_grid img:nth-child(2){ animation-delay: 0.2s; }
+
+@keyframes fadeInUp{
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glowing border effect on hover */
+.stats_grid img::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--accent), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Hover and focus effects */
+.stats_grid img:hover,
+.stats_grid img:focus-visible{
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--glow);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.stats_grid img:hover::before,
+.stats_grid img:focus-visible::before{
+  opacity: 1;
+}
+
+/* Active state */
+.stats_grid img:active{
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Smaller screens */
+@media (max-width: 420px){
+  .stats_grid img{
+     border-radius: 12px;
+     padding: 12px;
+     max-width: 100%;
+  }
+
+  #stats_section.section{
+     padding-top: 2rem;
+     padding-bottom: 2rem;
+  }
+  
+  #stats_section .section-title{
+     margin-bottom: 1.5rem;
+  }
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+  }
+  
+  .stats_grid img:hover,
+  .stats_grid img:focus-visible{
+     transform: none;
+  }
+}
